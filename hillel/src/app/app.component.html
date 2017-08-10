@@ -1,11 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h2>Todo list:</h2>  
 </div>
 
 <ul>
-  <li *ngFor="let toDo of toDoList; let i = index" (click)="removeItem(toDo)" [class.done]="toDo.isDone">
+  <li *ngFor="let toDo of toDoList" (click)="removeItem(toDo)" [class.done]="toDo.isDone">
     {{toDo.target}}
   </li>
 </ul>
+
+<input #newItem type="text" required>
+<button (click)=addItem(newItem)>Add new item!</button>
 

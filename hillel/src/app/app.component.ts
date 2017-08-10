@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -24,4 +24,15 @@ export class AppComponent {
   removeItem = function (item) {
     item.isDone = !item.isDone;
   };
+
+  addItem(item) {
+    let newItem = {
+      target: item.value,
+      isDone: false
+    };
+
+    this.toDoList.push(newItem);
+    item.value = '';
+  }
 }
+
