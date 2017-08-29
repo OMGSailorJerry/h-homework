@@ -1,38 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [TodoService]
 })
 export class AppComponent {
-  toDoList = [
-    {
-      target: 'Look at that wheel',
-      isDone: false
-    },
-    {
-      target: 'Keep calm',
-      isDone: false
-    },
-    {
-      target: 'Keep it real',
-      isDone: false
-    }
-  ];
+  constructor(private todoService: TodoService) {}
 
-  removeItem = function (item) {
-    item.isDone = !item.isDone;
-  };
+  todoList = this.todoService.getTodoList();
 
-  addItem(item) {
-    let newItem = {
-      target: item.value,
-      isDone: false
-    };
+  removeTodo = this.todoService.removeTodo;
 
-    this.toDoList.push(newItem);
-    item.value = '';
-  }
+  addTodo = this.todoService.addTodo;
 }
-
