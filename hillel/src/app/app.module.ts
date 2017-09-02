@@ -1,23 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TestComponent } from './test.component';
 import { TodoListComponent } from './todo-list.component';
+import { TodoDetailsComponent } from './todo-details.component';
 
 const appRoutes: Routes = [
-  // { path: 'details/:id', component: TodoDetails },
-  { path: 'test', component: TestComponent, data: { title: 'Test!!!' }},
-  { path: '', component: AppComponent }
+  { path: 'todo/:id', component: TodoDetailsComponent },
+  { path: '', component: TodoListComponent }
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoDetailsComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,

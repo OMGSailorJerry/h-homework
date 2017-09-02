@@ -3,10 +3,14 @@
 </div>
 
 <ul>
-    <li *ngFor="let toDo of todoList" (click)="removeTodo(toDo)" [class.done]="toDo.isDone">
+    <li *ngFor="let toDo of todoList" [class.done]="toDo.isDone" (click)="goTotodo(toDo)">
         {{toDo.target}}
     </li>
 </ul>
 
-<input #newTodo type="text" required>
-<button (click)=addTodo(newTodo)>Add new item!</button>
+<form #newTodoform="ngForm" (ngSubmit)="submitForm(newTodoform)">
+    <input placeholder="What to do?" name="target" ngModel>
+    <textarea name="description" cols="30" rows="10" ngModel></textarea>
+
+    <button type="submit" class="ui button">Add new item!</button>
+</form>

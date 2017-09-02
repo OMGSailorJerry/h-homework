@@ -1,6 +1,20 @@
 li {
     cursor: pointer;
+    list-style: decimal;
 }
 .done {
     text-decoration: line-through;
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    max-width: 400px;
+    margin: 8px auto;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 30px;
 }
