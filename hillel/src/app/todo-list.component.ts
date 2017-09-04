@@ -29,4 +29,10 @@ export class TodoListComponent {
     this.addTodo(form.value.target, form.value.description);
     form.reset();
   }
+
+  onCl(input, text) {
+    // console.log(input.value, text.value);
+    this.addTodo(input.value, text.value);
+    // form.reset();
+  }
 }
