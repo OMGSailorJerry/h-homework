@@ -11,7 +11,7 @@ import { TodoService } from './todo.service';
 })
 export class TodoDetailsComponent {
     private id: number;
-    private todo;
+    private todo: object;
 
     constructor(
         private route: ActivatedRoute,
