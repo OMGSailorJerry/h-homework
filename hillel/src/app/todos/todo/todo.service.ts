@@ -6,7 +6,7 @@ import { toDoList } from './mock-todo';
 export class TodoService {
     private todoList;
 
-    getTodoList(): void {
+    getTodoList() {
         return toDoList;
     }
 
@@ -23,7 +23,9 @@ export class TodoService {
             target: todo,
             isDone: false,
             description: todoDescription,
-            id: this.todoList.length + 1
+            id: this.todoList.length + 1,
+            due: null,
+            isRemoved: false
         };
 
         this.todoList.push(newTodo);
