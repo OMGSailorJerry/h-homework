@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
   // constructor(private todoService: TodoService) {}
 
   // todoList = this.todoService.getTodoList();
@@ -14,4 +15,9 @@ export class AppComponent {
   // removeTodo = this.todoService.removeTodo;
 
   // addTodo = this.todoService.addTodo;
+  constructor(private router: Router) {
+  }
+
+  ngOnInit() {
+  }
 }

@@ -1,20 +1,46 @@
-li {
-    cursor: pointer;
-    list-style: decimal;
+* {
+  font-family: Verdana, sans-serif;
 }
+
+
 .done {
     text-decoration: line-through;
 }
 a {
     text-decoration: none;
+    color: #080808;
+}
+
+a:hover {
+  opacity: .6;
+}
+
+a + a {
+margin-left: 20px;
 }
 
 body {
-    max-width: 400px;
-    margin: 8px auto;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
 }
 
-input, textarea {
-    width: 100%;
-    margin-bottom: 30px;
+nav {
+  padding: 20px;
+  color: #fafafa;
+  background-color: #080808;
+  font-size: 20px;
+}
+
+nav a  {
+  color: inherit;
+}
+
+a.active {
+  text-decoration: underline;
+}
+
+.wrap {
+  width: 960px;
+  margin: 0 auto;
 }

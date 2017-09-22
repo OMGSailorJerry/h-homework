@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TodoService } from './todo.service';
+import { TodoService } from '../todo/todo.service';
 
 @Component({
   selector: 'app-todolist',
   templateUrl: './todo-list.component.html',
-  styleUrls: [],
+  styleUrls: ['./todo-list.component.css'],
   providers: [TodoService]
 })
 export class TodoListComponent {
@@ -31,8 +31,6 @@ export class TodoListComponent {
   }
 
   onCl(input, text) {
-    // console.log(input.value, text.value);
     this.addTodo(input.value, text.value);
-    // form.reset();
   }
 }
