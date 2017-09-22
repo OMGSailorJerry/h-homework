@@ -32,5 +32,11 @@ export class TodoListComponent {
 
   onCl(input, text) {
     this.addTodo(input.value, text.value);
+    input.value = null;
+    text.value = null;
+  }
+
+  existingTodoList(value: boolean) {
+    return this.todoList.filter((item) => item.isRemoved === !value);
   }
 }

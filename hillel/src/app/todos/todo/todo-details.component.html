@@ -1,6 +1,26 @@
-<div *ngIf="todo">
+<div *ngIf="todo && !authService.isAuth">
   <h1 [class.done]="todo.isDone">{{todo.id}}: {{todo.target}}</h1>
   <h4>Description:</h4>
   <p>{{todo.description}}</p>
-  <button (click)="removeItem(todo)">DONE</button>
+  <p><b>Due - </b>{{todo.due || 'Open date'}}</p>
+
+  <button (click)="doneItem(todo)">DONE</button>
+</div>
+
+<div *ngIf="todo && authService.isAuth">
+  <h3>Administrate this...</h3>
+  <h1 [class.done]="todo.isDone">{{todo.id}}: {{todo.target}}</h1>
+  <h4>Status:</h4>
+  <div *ngIf="todo.isRemoved">Removed</div><div *ngIf="!todo.isRemoved">Exist</div>
+  <h4>Description:</h4>
+  <p>{{todo.description}}</p>
+  <p>
+    <b>Due - </b>{{todo.due || 'Open date'}}
+  </p>
+  <p>
+      Set date <input #date type="date" name="date" value="todo.due">
+  </p>
+  <button (click)="doneItem(todo)">DONE</button>
+  <button (click)="onSave(todo, date)" class="ui button">Save</button>
+  <button (click)="removeItem(todo)">Remove</button>
 </div>

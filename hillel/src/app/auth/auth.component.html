@@ -1,9 +1,13 @@
-<div class="auth">
-    <!-- <form action=""> -->
-      <label for="login">Login</label>
-      <input #login type="text" name="login" id="login">
-      <label for="pass">Password</label>
-      <input #password type="password" name="pass" id="pass">
-      <button (click)="logIn(login.value, password.value)">Sign in</button>
-    <!-- </form> -->
-  </div>
+<div class="auth" *ngIf="!authService.isAuth">
+  <!-- <form action=""> -->
+  <label for="login">Login (admin)</label>
+  <input #login type="text" name="login" id="login">
+  <label for="pass">Password (admin)</label>
+  <input #password type="password" name="pass" id="pass">
+  <button (click)="logIn(login.value, password.value)">Sign in</button>
+  <!-- </form> -->
+</div>
+
+<div class="auth" *ngIf="authService.isAuth">
+  <button (click)="logOut()" class="wide">Sign out</button>
+</div>

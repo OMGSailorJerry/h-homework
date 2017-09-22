@@ -8,14 +8,10 @@ import { AppComponent } from './app.component';
 // import { AuthComponent } from './admin/auth/auth.component';
 import { TodosModule } from './todos/todos.module';
 import { AdminModule } from './admin/admin.module';
-import { AuthService } from './auth/auth.service';
 
 const appRoutes: Routes = [
-  // { path: 'todo', component: TodoListComponent },
-  // { path: 'admin', component: AdminComponent },
-  // { path: 'signin', component: AuthComponent},
-  // { path: '', redirectTo: '/todo', pathMatch: 'full'},
-  // { path: '**', redirectTo: '/todo', pathMatch: 'full'},
+  { path: '', redirectTo: '/todo', pathMatch: 'full'},
+  { path: '**', redirectTo: '/todo', pathMatch: 'full'},
 ];
 @NgModule({
   declarations: [
@@ -31,9 +27,7 @@ const appRoutes: Routes = [
       { enableTracing: false }
     )
   ],
-  providers: [
-    AuthService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

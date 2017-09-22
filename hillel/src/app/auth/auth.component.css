@@ -17,3 +17,8 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+
+.wide {
+  width: 100%;
+}
