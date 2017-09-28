@@ -1,11 +1,19 @@
 <div class="auth" *ngIf="!authService.isAuth">
-  <!-- <form action=""> -->
-  <label for="login">Login (admin)</label>
-  <input #login type="text" name="login" id="login">
-  <label for="pass">Password (admin)</label>
-  <input #password type="password" name="pass" id="pass">
-  <button (click)="logIn(login.value, password.value)">Sign in</button>
-  <!-- </form> -->
+  <form action="" #authForm="ngForm" (ngSubmit)="submitForm(authForm)">
+    <label for="login">Login (admin)</label>
+    <input  #login
+            ngModel
+            type="text"
+            name="login"
+            id="login">
+    <label for="pass">Password (admin)</label>
+    <input  #password
+            ngModel
+            type="password"
+            name="password"
+            id="pass">
+    <button type="submit" class="button">Sign in</button>
+  </form>
 </div>
 
 <div class="auth" *ngIf="authService.isAuth">

@@ -18,13 +18,12 @@ export class AuthService {
   signin(login: string, password: string) {
     return Observable
       .of(true)
-      .delay(2000)
+      .delay(100)
       .do(val => {
         if (login === 'admin' && password === 'admin') {
           this.isAuth = true;
           return this.isAuth;
         }
-        console.log(this.isAuth);
       });
   }
 }

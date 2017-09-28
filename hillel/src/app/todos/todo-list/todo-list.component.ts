@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
+import { AuthService } from '../../auth/auth.service';
 import { TodoService } from '../todo/todo.service';
 
 @Component({
@@ -12,8 +14,9 @@ import { TodoService } from '../todo/todo.service';
 export class TodoListComponent {
   constructor(
     private todoService: TodoService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   todoList = this.todoService.getTodoList();
 
@@ -21,19 +24,15 @@ export class TodoListComponent {
 
   addTodo = this.todoService.addTodo;
 
+  isAuth = this.authService.isAuth;
+
   goTotodo(todo: any) {
     this.router.navigate(['/todo', todo.id]);
   }
 
-  submitForm(form: any): void {
+  submitForm(form: NgForm) {
     this.addTodo(form.value.target, form.value.description);
     form.reset();
-  }
-
-  onCl(input, text) {
-    this.addTodo(input.value, text.value);
-    input.value = null;
-    text.value = null;
   }
 
   existingTodoList(value: boolean) {

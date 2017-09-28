@@ -9,12 +9,19 @@
       </li>
   </ul>
 
-  <!-- <form #newTodoform="ngForm" (ngSubmit)="submitForm(newTodoform)"> -->
-      <input #input placeholder="What to do?" name="target">
-      <textarea #text name="description" cols="30" rows="10"></textarea>
+  <form #newTodoform="ngForm" (ngSubmit)="submitForm(newTodoform)" *ngIf="isAuth">
+      <input  name="target"
+              ngModel
+              required
+              #target="ngModel"
+              placeholder="What to do?">
+      <textarea name="description"
+                ngModel
+                #description="ngModel"
+                cols="30" rows="10"></textarea>
 
-      <button (click)="onCl(input, text)" type="submit" class="ui button">+ Add new</button>
-  <!-- </form> -->
+      <button type="submit" class="button">+ Add new</button>
+  </form>
 </div>
 
 <div class="info">

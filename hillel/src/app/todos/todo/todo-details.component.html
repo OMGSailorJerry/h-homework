@@ -1,26 +1,43 @@
 <div *ngIf="todo && !authService.isAuth">
-  <h1 [class.done]="todo.isDone">{{todo.id}}: {{todo.target}}</h1>
+  <h1 [class.done]="todo.isDone">ID {{todo.id}}: {{todo.target}}</h1>
   <h4>Description:</h4>
   <p>{{todo.description}}</p>
-  <p><b>Due - </b>{{todo.due || 'Open date'}}</p>
 
   <button (click)="doneItem(todo)">DONE</button>
 </div>
 
 <div *ngIf="todo && authService.isAuth">
-  <h3>Administrate this...</h3>
-  <h1 [class.done]="todo.isDone">{{todo.id}}: {{todo.target}}</h1>
-  <h4>Status:</h4>
-  <div *ngIf="todo.isRemoved">Removed</div><div *ngIf="!todo.isRemoved">Exist</div>
-  <h4>Description:</h4>
-  <p>{{todo.description}}</p>
-  <p>
-    <b>Due - </b>{{todo.due || 'Open date'}}
-  </p>
-  <p>
-      Set date <input #date type="date" name="date" value="todo.due">
-  </p>
-  <button (click)="doneItem(todo)">DONE</button>
-  <button (click)="onSave(todo, date)" class="ui button">Save</button>
-  <button (click)="removeItem(todo)">Remove</button>
+  <h2 *ngIf="!todo.isDone">Should to be done!</h2>
+  <h1 [class.done]="todo.isDone">ID {{todo.id}}: {{todo.target}}</h1>
+
+  <h4>Status:
+      <div *ngIf="todo.isRemoved" style="display: inline">Removed</div><div *ngIf="!todo.isRemoved" style="display: inline">Exist</div>
+  </h4>
+
+
+  <h4>Info:</h4>
+  <form #authForm="ngForm" (submit)="submitForm(authForm)">
+    <p>
+      <label for="target" style="margin-bottom: 10px; display: inline-block">Name:</label>
+      <input  type="text"
+              [ngModel]="todo.target"
+              name="target"
+              id="target"
+              required="required">
+    </p>
+    <p>
+      <label for="description" style="margin-bottom: 10px; display: inline-block">Description:</label>
+      <textarea name="description"
+                [ngModel]="todo.description"
+                id="description"
+                required="required" style="width: 100%;
+                min-height: 40px;">
+      </textarea>
+    </p>
+
+    <button type="submit">Save</button>
+    <button (click)="removeItem(todo)">Remove</button>
+    <button (click)="doneItem(todo)">DONE</button>
+
+  </form>
 </div>
