@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { TodosModule } from '../todos/todos.module';
@@ -11,7 +12,9 @@ import { AuthService } from '../auth/auth.service';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    TodosModule
+    TodosModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AdminComponent,

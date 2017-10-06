@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodoDetailsComponent } from './todo/todo-details.component';
@@ -10,7 +11,9 @@ import { AuthService } from '../auth/auth.service';
 @NgModule({
   imports: [
     CommonModule,
-    TodosRoutingModule
+    TodosRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     TodoDetailsComponent,

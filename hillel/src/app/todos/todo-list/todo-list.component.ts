@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from '../todo/todo.service';
 
@@ -10,10 +11,14 @@ import { TodoService } from '../todo/todo.service';
   providers: [TodoService]
 })
 export class TodoListComponent {
+  todoForm: FormGroup;
   constructor(
     private todoService: TodoService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.createForm();
+  }
 
   todoList = this.todoService.getTodoList();
 
@@ -21,13 +26,21 @@ export class TodoListComponent {
 
   addTodo = this.todoService.addTodo;
 
+  createForm() {
+    this.todoForm = this.fb.group({
+      target: ['', [Validators.required]],
+      description: ['', []]
+    });
+  }
+
   goTotodo(todo: any) {
     this.router.navigate(['/todo', todo.id]);
   }
 
-  submitForm(form: any): void {
-    this.addTodo(form.value.target, form.value.description);
-    form.reset();
+  submitForm(): void {
+
+    this.addTodo(this.todoForm.value.target, this.todoForm.value.description);
+    this.todoForm.reset();
   }
 
   onCl(input, text) {
