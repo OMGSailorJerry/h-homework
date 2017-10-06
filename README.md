@@ -9,3 +9,4 @@
 
 ##!!! `hw7` [Todo list + service + routing + auth + form](https://github.com/OMGSailorJerry/h-homework/tree/hw7).
 
+##!!! `hw8` [Todo list + service + routing + auth + form / reactive](https://github.com/OMGSailorJerry/h-homework/tree/hw8)
