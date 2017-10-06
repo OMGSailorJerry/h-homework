@@ -29,7 +29,7 @@ export class TodoDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = +params['id'] - 1;
       this.todo = this.todoService.getTodoList()[this.id];
-      if (this.authService.isAuth) {
+      if (this.todo) {
         this.todoDetailsForm.setValue({
           target:    this.todo.target,
           description: this.todo.description
