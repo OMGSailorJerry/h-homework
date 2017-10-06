@@ -9,7 +9,7 @@
       </li>
   </ul>
 
-  <form [formGroup]="todoForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="todoForm" (ngSubmit)="submitForm()" *ngIf="isAuth">
       <input placeholder="What to do?" formControlName="target">
       <textarea formControlName="description" cols="30" rows="10"></textarea>
 

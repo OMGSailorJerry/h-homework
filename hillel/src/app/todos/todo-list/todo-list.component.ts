@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import { AuthService } from '../../auth/auth.service';
 import { TodoService } from '../todo/todo.service';
 
 @Component({
@@ -15,16 +16,20 @@ export class TodoListComponent {
   constructor(
     private todoService: TodoService,
     private router: Router,
+    private authService: AuthService,
     private fb: FormBuilder
   ) {
     this.createForm();
   }
+
 
   todoList = this.todoService.getTodoList();
 
   removeTodo = this.todoService.removeTodo;
 
   addTodo = this.todoService.addTodo;
+
+  isAuth = this.authService.isAuth;
 
   createForm() {
     this.todoForm = this.fb.group({
@@ -33,20 +38,14 @@ export class TodoListComponent {
     });
   }
 
+
   goTotodo(todo: any) {
     this.router.navigate(['/todo', todo.id]);
   }
 
   submitForm(): void {
-
     this.addTodo(this.todoForm.value.target, this.todoForm.value.description);
     this.todoForm.reset();
-  }
-
-  onCl(input, text) {
-    this.addTodo(input.value, text.value);
-    input.value = null;
-    text.value = null;
   }
 
   existingTodoList(value: boolean) {

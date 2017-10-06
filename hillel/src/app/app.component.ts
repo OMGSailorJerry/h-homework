@@ -8,13 +8,6 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent  implements OnInit {
-  // constructor(private todoService: TodoService) {}
-
-  // todoList = this.todoService.getTodoList();
-
-  // removeTodo = this.todoService.removeTodo;
-
-  // addTodo = this.todoService.addTodo;
   constructor(private router: Router) {
   }
 

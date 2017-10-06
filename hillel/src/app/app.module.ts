@@ -3,9 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-// import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { AppComponent } from './app.component';
-// import { AuthComponent } from './admin/auth/auth.component';
 import { TodosModule } from './todos/todos.module';
 import { AdminModule } from './admin/admin.module';
 

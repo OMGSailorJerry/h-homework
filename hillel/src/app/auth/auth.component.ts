@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+import { AuthService } from './auth.service';
 
 
 
@@ -25,19 +26,14 @@ export class AuthComponent {
     });
   }
 
-  submitForm() {
-
-    this.logIn(this.authForm.value.login, this.authForm.value.pass);
+  logOut() {
+    this.authService.signout();
   }
 
-  logIn(login: string, password: string) {
-    this.authService.signin(login, password)
+  submitForm(form: NgForm) {
+    this.authService.signin(this.authForm.value.login, this.authForm.value.pass)
       .subscribe(() => {
         this.router.navigate([this.authService.redirectUrl]);
       });
-  }
-
-  logOut() {
-    this.authService.signout();
   }
 }

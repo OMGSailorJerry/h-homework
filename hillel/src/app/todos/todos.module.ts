@@ -16,8 +16,8 @@ import { AuthService } from '../auth/auth.service';
     ReactiveFormsModule
   ],
   declarations: [
-    TodoDetailsComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoDetailsComponent
   ],
   providers: [ TodoService, AuthService ],
   exports: [
